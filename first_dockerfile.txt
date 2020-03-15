@@ -1,0 +1,17 @@
+[root@ip-172-31-33-244 ~]# cat dockerfile
+FROM ubuntu:latest
+
+LABEL version="0.0.1"
+LABEL maintainer="gauravbhalekar5@gmail.com"
+
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN apt-get install nginx -y
+
+EXPOSE 80
+
+# directive tells Nginx to stay in the foreground (deamon off & deamon on concept)
+# deamon off : will stay in the foreground
+# deamon on  : will stay in the background
+
+CMD ["nginx", "-g", "daemon off;"]
